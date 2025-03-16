@@ -22,6 +22,7 @@ public class BlogController {
     public BlogController(BlogService blogService){
         this.blogService = blogService;
 
+
     }
 
     @GetMapping("/user")
@@ -29,7 +30,7 @@ public class BlogController {
         List<Blog> blogs = blogService.getBlogsByUserId();
         if (blogs.isEmpty()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body(ApiResponse.error(HttpStatus.NOT_FOUND.value(),"No blogs yet",null));
+                    .body(ApiResponse.error(HttpStatus.NOT_FOUND.value(),"No bogs yet",null));
         }
         return ResponseEntity.ok(ApiResponse.success(blogs));
     }
