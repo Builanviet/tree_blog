@@ -21,6 +21,7 @@ public class BlogController {
     @Autowired
     public BlogController(BlogService blogService){
         this.blogService = blogService;
+
     }
 
     @GetMapping("/user")
