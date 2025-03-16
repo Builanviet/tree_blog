@@ -55,6 +55,10 @@ public class BlogController {
     public ResponseEntity<ApiResponse<List<Blog>>> getAllBlogsOrderedByCreatedAt(
             @RequestParam(value = "visibility", required = false) Blog.Visibility visibility) {
         List<Blog> blogs = blogService.listAllBlog(visibility);
+        if (blogs.isEmpty()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(ApiResponse.error(HttpStatus.NOT_FOUND.value(),"No blogs yet",null));
+        }
         return ResponseEntity.ok(ApiResponse.success(blogs));
     }
 }
